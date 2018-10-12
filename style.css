@@ -1,5 +1,4 @@
 body {
-  /* height: 100%; */
   font-family: "Open Sans", sans-serif;
   font-size: 18px;
   padding: 2em;
@@ -44,11 +43,11 @@ h3 {
 }
 
 .question label .option {
-  content: "";
   background: #f2f2f2;
   border: 0.2em solid transparent;
   border-radius: 50%;
   box-sizing: border-box;
+  content: "";
   display: inline-block;
   font-weight: 700;
   height: 2em;
@@ -67,4 +66,8 @@ h3 {
 
 .question input[type="radio"]:hover ~ label .option {
   border-color: #f1b956;
+}
+
+.chart {
+  margin: 2em 1em;
 }
