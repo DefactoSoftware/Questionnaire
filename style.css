@@ -14,6 +14,27 @@ h3 {
   margin-top: 0;
 }
 
+.layout {
+  width: 100%;
+  position: relative;
+}
+
+.layout .column-chart {
+  position: relative;
+  margin: 2em;
+}
+
+@media (min-width: 1200px) {
+  .layout {
+    display: flex;
+  }
+
+  .layout .column-chart {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
 .questions {
   border-top: 2px solid #f2f2f2;
 }
@@ -66,8 +87,4 @@ h3 {
 
 .question input[type="radio"]:hover ~ label .option {
   border-color: #f1b956;
-}
-
-.chart {
-  margin: 2em 1em;
 }
