@@ -15,21 +15,21 @@ h3 {
 }
 
 .layout {
+  position: relative;
   width: 100%;
-  position: relative;
 }
 
-.layout .column-chart {
-  position: relative;
+.layout .chart {
   margin: 2em;
+  position: relative;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1000px) {
   .layout {
     display: flex;
   }
 
-  .layout .column-chart {
+  .layout .chart {
     flex: 1;
     min-width: 0;
   }
@@ -41,50 +41,70 @@ h3 {
 
 .question {
   border-bottom: 2px solid #f2f2f2;
-  padding: 1em;
+  padding: 1em 0;
 }
 
 .options {
   display: flex;
   flex-direction: row-reverse;
-  justify-content: flex-end;
+  justify-content: space-around;
+  justify-content: space-between;
+  padding: 1em 0;
 }
 
-.question input[type="radio"] {
-  display: none;
+@media (min-width: 1000px) {
+  .options {
+    justify-content: flex-end;
+  }
 }
 
-.question label {
-  cursor: pointer;
-  padding-left: 1em;
-}
-
-.question label:last-of-type {
-  padding-left: 0;
-}
-
-.question label .option {
+.option {
   background: #f2f2f2;
   border: 0.2em solid transparent;
   border-radius: 50%;
   box-sizing: border-box;
   content: "";
   display: inline-block;
+  font-size: 1em;
   font-weight: 700;
   height: 2em;
-  line-height: calc(2em - 0.4em);
   line-height: 1.6em;
   text-align: center;
   transition: border 0.15s, background 0.15s, color 0.15s;
   width: 2em;
 }
 
-.question input[type="radio"]:checked ~ label .option {
+@media (min-width: 500px) {
+  .option {
+    font-size: 2em;
+  }
+}
+
+@media (min-width: 1000px) {
+  .option {
+    font-size: 1em;
+  }
+}
+
+label {
+  cursor: pointer;
+  padding-left: 1em;
+}
+
+label:last-of-type {
+  padding-left: 0;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked ~ label .option {
   background: #f1b956;
   border-color: #f1b956;
   color: #fff;
 }
 
-.question input[type="radio"]:hover ~ label .option {
+input[type="radio"]:hover ~ label .option {
   border-color: #f1b956;
 }
