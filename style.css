@@ -15,11 +15,10 @@ h3 {
 }
 
 .layout {
-  position: relative;
   width: 100%;
 }
 
-.layout .chart {
+.results {
   margin: 2em;
   position: relative;
 }
@@ -29,10 +28,15 @@ h3 {
     display: flex;
   }
 
-  .layout .chart {
+  .results {
     flex: 1;
-    min-width: 0;
+    max-width: 1000px;
   }
+}
+
+.chart {
+  margin-bottom: 2em;
+  min-width: 0;
 }
 
 .questions {

@@ -1,23 +1,23 @@
 "use strict";
 
-// Load data and initialize
+// Load data
 $.getJSON("data.json", function(data) {
   $(document).ready(function() {
     init(data);
   });
 });
 
+// Initialize
 function init(data) {
   var questons = new Questions("#questions", data);
-  var chart = new RadarChart("#chart");
+  var formData = $(questons.form).serializeArray();
+  var results = new Results(formData);
 
   function updateChart() {
-    var formData = $(questons.form).serializeArray();
-
-    chart.update(formData);
+    formData = $(questons.form).serializeArray();
+    results.update(formData);
   }
 
-  updateChart();
   questons.form.addEventListener("change", updateChart);
 }
 
@@ -76,32 +76,34 @@ function Questions(selector, data) {
   }
 }
 
-// RadarChart
-function RadarChart(selector) {
-  this.options = {
-    legend: {
-      display: false
-    },
-    scale: {
-      ticks: {
-        beginAtZero: true,
-        stepSize: 1,
-        max: 5
+// Results
+function Results(data) {
+  var chartData = parseData(data);
+
+  this.radarChart = new Chart("chart", {
+    type: "radar",
+    data: chartData,
+    options: {
+      legend: {
+        display: false
+      },
+      scale: {
+        ticks: {
+          beginAtZero: true,
+          stepSize: 1,
+          max: 5
+        }
+      },
+      scaleLabel: {
+        padding: 50
       }
-    },
-    scaleLabel: {
-      padding: 50
     }
-  };
+  });
 
+  // Update the chart data
   this.update = function(data) {
-    var chartData = parseData(data);
-
-    this.chart = new Chart($(selector), {
-      type: "radar",
-      data: chartData,
-      options: this.options
-    });
+    this.radarChart.data = parseData(data);
+    this.radarChart.update();
   };
 
   function parseData(data) {
