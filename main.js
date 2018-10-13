@@ -80,7 +80,7 @@ function Questions(selector, data) {
 function Results(data) {
   var chartData = parseData(data);
 
-  this.radarChart = new Chart("chart", {
+  this.radarChart = new Chart("chart1", {
     type: "radar",
     data: chartData,
     options: {
@@ -93,17 +93,47 @@ function Results(data) {
           stepSize: 1,
           max: 5
         }
+      }
+    }
+  });
+
+  this.pieChart = new Chart("chart2", {
+    type: "bar",
+    data: chartData,
+    options: {
+      legend: {
+        display: false
       },
-      scaleLabel: {
-        padding: 50
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+              stepSize: 1,
+              max: 5
+            }
+          }
+        ],
+        xAxes: [
+          {
+            ticks: {
+              autoSkip: false
+            }
+          }
+        ]
       }
     }
   });
 
   // Update the chart data
   this.update = function(data) {
-    this.radarChart.data = parseData(data);
+    chartData = parseData(data);
+
+    this.radarChart.data = chartData;
     this.radarChart.update();
+
+    this.pieChart.data = chartData;
+    this.pieChart.update();
   };
 
   function parseData(data) {
