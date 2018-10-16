@@ -12,29 +12,29 @@ export default class Questions {
     const question = document.createElement("div");
     question.setAttribute("class", "question");
 
-    var title = document.createElement("h3");
+    const title = document.createElement("h3");
     title.innerHTML = questionData.title;
     question.appendChild(title);
 
-    var options = document.createElement("div");
+    const options = document.createElement("div");
     options.setAttribute("class", "options");
 
     // Add options
-    for (var i = 5; i--; ) {
-      var value = i + 1;
-      var id = "q" + index + i;
+    for (let i = 5; i--; ) {
+      const value = i + 1;
+      const id = "q" + index + i;
 
-      var input = document.createElement("input");
+      const input = document.createElement("input");
       input.setAttribute("type", "radio");
       input.setAttribute("value", value);
       input.setAttribute("name", questionData.title);
       input.setAttribute("id", id);
       options.appendChild(input);
 
-      var label = document.createElement("label");
+      const label = document.createElement("label");
       label.setAttribute("for", id);
 
-      var option = document.createElement("div");
+      const option = document.createElement("div");
       option.setAttribute("class", "option");
       option.innerHTML = value;
       label.appendChild(option);
@@ -43,7 +43,7 @@ export default class Questions {
     }
 
     // Default option
-    var input = document.createElement("input");
+    const input = document.createElement("input");
     input.setAttribute("type", "radio");
     input.setAttribute("value", 0);
     input.setAttribute("name", questionData.title);

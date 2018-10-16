@@ -2,8 +2,6 @@ import "./style.css";
 
 export default class Results {
   constructor(data) {
-    console.log("Results init");
-
     this.data = this.parseData(data);
 
     this.radarChart = new Chart("chart1", {
@@ -64,8 +62,8 @@ export default class Results {
   }
 
   parseData(data) {
-    var labels = [];
-    var values = [];
+    const labels = [];
+    const values = [];
 
     data.forEach(function(answer) {
       labels.push(answer.name);
