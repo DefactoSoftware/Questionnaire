@@ -2,8 +2,9 @@ import "./style.css";
 
 export default class Results {
   constructor(selector, data) {
-    this.element = document.querySelector(selector);
     this.data = this.parseData(data);
+    this.element = document.querySelector(selector);
+    this.element.classList.add("results");
     this.charts = [];
 
     Results.chartOptions.forEach(this.renderChart, this);

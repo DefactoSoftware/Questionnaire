@@ -2,8 +2,9 @@ import "./style.css";
 
 export default class Questions {
   constructor(selector, data) {
-    this.element = document.querySelector(selector);
     this.data = data;
+    this.element = document.querySelector(selector);
+    this.element.classList.add("questions");
 
     data.forEach(this.addQuestion, this);
   }

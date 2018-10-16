@@ -1,4 +1,6 @@
-.chart {
-  margin: 2em 0;
-  min-width: 0;
+.results {
+  .chart {
+    margin: 2em 0;
+    min-width: 0;
+  }
 }

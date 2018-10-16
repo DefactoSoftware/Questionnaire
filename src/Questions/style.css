@@ -1,72 +1,74 @@
-.question {
-  border-bottom: 2px solid #f2f2f2;
-  padding: 1em 0;
-}
+.questions {
+  .question {
+    border-bottom: 2px solid #f2f2f2;
+    padding: 1em 0;
+  }
 
-.question:first-child {
-  border-top: 2px solid #f2f2f2;
-}
+  .question:first-child {
+    border-top: 2px solid #f2f2f2;
+  }
 
-.options {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  padding: 1em 0;
-}
-
-@media (min-width: 1000px) {
   .options {
-    justify-content: flex-end;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 1em 0;
   }
-}
 
-.option {
-  background: #f2f2f2;
-  border: 0.2em solid transparent;
-  border-radius: 50%;
-  box-sizing: border-box;
-  content: "";
-  display: inline-block;
-  font-size: 1em;
-  font-weight: 700;
-  height: 2em;
-  line-height: 1.6em;
-  text-align: center;
-  transition: border 0.15s, background 0.15s, color 0.15s;
-  width: 2em;
-}
-
-@media (min-width: 500px) {
-  .option {
-    font-size: 2em;
+  @media (min-width: 1000px) {
+    .options {
+      justify-content: flex-end;
+    }
   }
-}
 
-@media (min-width: 1000px) {
   .option {
+    background: #f2f2f2;
+    border: 0.2em solid transparent;
+    border-radius: 50%;
+    box-sizing: border-box;
+    content: "";
+    display: inline-block;
     font-size: 1em;
+    font-weight: 700;
+    height: 2em;
+    line-height: 1.6em;
+    text-align: center;
+    transition: border 0.15s, background 0.15s, color 0.15s;
+    width: 2em;
   }
-}
 
-label {
-  cursor: pointer;
-  padding-left: 1em;
-}
+  @media (min-width: 500px) {
+    .option {
+      font-size: 2em;
+    }
+  }
 
-label:last-of-type {
-  padding-left: 0;
-}
+  @media (min-width: 1000px) {
+    .option {
+      font-size: 1em;
+    }
+  }
 
-input[type="radio"] {
-  display: none;
-}
+  label {
+    cursor: pointer;
+    padding-left: 1em;
+  }
 
-input[type="radio"]:checked ~ label .option {
-  background: #f1b956;
-  border-color: #f1b956;
-  color: #fff;
-}
+  label:last-of-type {
+    padding-left: 0;
+  }
 
-input[type="radio"]:hover ~ label .option {
-  border-color: #f1b956;
+  input[type="radio"] {
+    display: none;
+  }
+
+  input[type="radio"]:checked ~ label .option {
+    background: #f1b956;
+    border-color: #f1b956;
+    color: #fff;
+  }
+
+  input[type="radio"]:hover ~ label .option {
+    border-color: #f1b956;
+  }
 }
