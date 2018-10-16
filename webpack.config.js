@@ -9,7 +9,7 @@ module.exports = {
     // results: "./src/Results/index.js"
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "build"),
     filename: "questionnaire.min.js",
     library: "questionnaire",
     // filename: "[name].min.js",
@@ -38,19 +38,19 @@ module.exports = {
           { loader: "css-loader", options: { importLoaders: 1 } },
           "postcss-loader"
         ]
+      },
+      {
+        test: /\.json$/,
+        type: "javascript/auto",
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "./data/[name].[ext]"
+            }
+          }
+        ]
       }
-      // {
-      //   test: /\.json$/,
-      //   type: "javascript/auto",
-      //   use: [
-      //     {
-      //       loader: "file-loader",
-      //       options: {
-      //         name: "data/[name].[ext]"
-      //       }
-      //     }
-      //   ]
-      // }
     ]
   },
   plugins: [

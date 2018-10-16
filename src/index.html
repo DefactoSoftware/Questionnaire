@@ -26,7 +26,7 @@
     <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
     <script>
 
-    $.getJSON("../data/data.json", function(data) {
+    $.getJSON("./data/questions.json", function(data) {
       var questions = new questionnaire.Questions("#questions", data.questions);
       var formData = $(questions.form).serializeArray();
       var results = new questionnaire.Results("#results", formData);
