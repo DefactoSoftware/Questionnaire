@@ -1,0 +1,38 @@
+{
+  "name": "Questionnaire",
+  "version": "1.0.0",
+  "description": "Questionnaire that renders the results as charts",
+  "main": "index.js",
+  "repository": "git@github.com:sn3p/DefactoSoftware/Questionnaire",
+  "author": "Matthijs Kuiper <info@matthijskuiper.nl>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config webpack.config.js --mode production",
+    "deploy": "git subtree push --prefix dist origin gh-pages",
+    "watch": "webpack --config webpack.config.js --mode development --watch",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "dependencies": {
+    "chart.js": "^2.7.2",
+    "jquery": "^3.3.1",
+    "moment": "^2.22.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.0",
+    "cssnano": "^4.1.4",
+    "file-loader": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.4",
+    "postcss-import": "^12.0.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.1.1",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  }
+}

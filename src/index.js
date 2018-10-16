@@ -1,7 +1,7 @@
-"use strict";
+import "./main.css";
 
 // Load data
-$.getJSON("data.json", function(data) {
+$.getJSON("../data/data.json", function(data) {
   $(document).ready(function() {
     init(data);
   });
