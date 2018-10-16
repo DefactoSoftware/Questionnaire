@@ -19,38 +19,29 @@ export default class Questions {
     const options = document.createElement("div");
     options.setAttribute("class", "options");
 
+    const name = questionData.title;
+
     // Add options
     for (let i = 5; i--; ) {
       const value = i + 1;
-      const id = "q" + index + i;
+      const id = "option" + index + i;
 
-      const input = document.createElement("input");
-      input.setAttribute("type", "radio");
-      input.setAttribute("value", value);
-      input.setAttribute("name", questionData.title);
-      input.setAttribute("id", id);
-      options.appendChild(input);
-
-      const label = document.createElement("label");
-      label.setAttribute("for", id);
-
-      const option = document.createElement("div");
-      option.setAttribute("class", "option");
-      option.innerHTML = value;
-      label.appendChild(option);
-
-      options.appendChild(label);
+      options.innerHTML += this.createOptionHTML(name, value, id);
     }
 
-    // Default option
-    const input = document.createElement("input");
-    input.setAttribute("type", "radio");
-    input.setAttribute("value", 0);
-    input.setAttribute("name", questionData.title);
-    input.checked = true;
-    options.appendChild(input);
+    // Default option (checked by default)
+    options.innerHTML += `<input type="radio" name="${name}" value="0" checked>`;
 
     question.appendChild(options);
     this.form.appendChild(question);
+  }
+
+  createOptionHTML(name, value, id) {
+    return `
+      <input type="radio" name="${name}" value="${value}" id="${id}">
+      <label for="${id}">
+        <div class="option">${value}</div>
+      </label>
+    `;
   }
 }
