@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --config webpack.config.js --mode production",
-    "deploy": "git subtree push --prefix build origin gh-pages",
+    "deploy": "git push origin `git subtree split --prefix build master`:gh-pages --force",
     "watch": "webpack --config webpack.config.js --mode development --watch",
     "start": "webpack-dev-server --mode development --open"
   },
