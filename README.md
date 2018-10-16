@@ -1,6 +1,11 @@
 # Questionnaire
 
-[Questionnaire](https://defactosoftware.github.io/Questionnaire/) that renders the results as charts.
+Questionnaire that renders the results as charts.
+
+### Examples
+
+- [Live results](https://defactosoftware.github.io/Questionnaire/) (single page)
+- [Submit and render results](https://defactosoftware.github.io/Questionnaire/questions.html)
 
 ## How to start
 

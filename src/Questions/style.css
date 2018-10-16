@@ -1,46 +1,10 @@
-body {
-  font-family: "Open Sans", sans-serif;
-  font-size: 18px;
-  padding: 2em;
-}
-
-h1,
-h2 {
-  font-family: "Montserrat", sans-serif;
-  margin-top: 0;
-}
-
-h3 {
-  margin-top: 0;
-}
-
-.layout {
-  width: 100%;
-}
-
-.results {
-  margin: 2em;
-  position: relative;
-}
-
-@media (min-width: 1000px) {
-  .layout {
-    display: flex;
-  }
-
-  .results {
-    flex: 1;
-    max-width: 1000px;
-  }
-}
-
-.questions {
-  border-top: 2px solid #f2f2f2;
-}
-
 .question {
   border-bottom: 2px solid #f2f2f2;
   padding: 1em 0;
+}
+
+.question:first-child {
+  border-top: 2px solid #f2f2f2;
 }
 
 .options {

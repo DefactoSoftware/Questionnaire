@@ -64,6 +64,18 @@ module.exports = {
       hash: true,
       template: "./src/index.html",
       filename: "index.html"
+    }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      hash: true,
+      template: "./src/questions.html",
+      filename: "questions.html"
+    }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      hash: true,
+      template: "./src/results.html",
+      filename: "results.html"
     })
   ],
   devServer: {

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Questionnaire</title>
+    <title>Questionnaire Results</title>
     <!-- <meta http-equiv=X-UA-Compatible content="IE=edge"> -->
     <!-- <meta name=viewport content="width=device-width, initial-scale=1"> -->
     <meta name="description" content="Questionnaire that renders the results as charts">
@@ -22,36 +22,13 @@
       margin-top: 0;
     }
 
-    .layout {
-      width: 100%;
-    }
-
-    .results {
-      margin: 2em;
-      position: relative;
-    }
-
-    @media (min-width: 1000px) {
-      .layout {
-        display: flex;
-      }
-
-      .results {
-        flex: 1;
-        max-width: 1000px;
-      }
-    }
-
     </style>
   </head>
   <body>
-    <h1>Domeinenkennis</h1>
+    <h1>Domeinenkennis resultaten</h1>
     <h2>Welke domeinen zijn belangrijk in uw organisatie?</h2>
 
-    <div class="layout">
-      <form id="questions"></form>
-      <div class="results" id="results"></div>
-    </div>
+    <div class="results" id="results"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
@@ -59,18 +36,26 @@
     <script src="questionnaire.min.js?dbbfffab9de66941fddb"></script>
     <script>
 
-    $.getJSON("./data/questions.json", function(data) {
-      var questions = new questionnaire.Questions("#questions", data.questions);
-      var formData = $(questions.element).serializeArray();
-      var results = new questionnaire.Results("#results", formData);
+    function getData() {
+      var params = [];
+      var query = window.location.search.substring(1);
+      var vars = query.split("&");
 
-      function updateChart() {
-        formData = $(questions.element).serializeArray();
-        results.update(formData);
+      for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        pair[0] = pair[0].replace(/\+/g, "%20");
+
+        params[i] = {
+          name: decodeURIComponent(pair[0]),
+          value: pair[1]
+        };
       }
 
-      questions.element.addEventListener("change", updateChart);
-    });
+      return params;
+    };
+
+    var data = getData();
+    var results = new questionnaire.Results("#results", data);
 
     </script>
   </body>
