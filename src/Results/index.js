@@ -1,64 +1,32 @@
 import "./style.css";
 
 export default class Results {
-  constructor(data) {
+  constructor(selector, data) {
+    this.element = document.querySelector(selector);
+    this.data = this.parseData(data);
+    this.charts = [];
+
+    Results.chartOptions.forEach(this.renderChart, this);
+  }
+
+  renderChart(options) {
+    options.data = this.data;
+
+    const canvas = document.createElement("canvas");
+    canvas.setAttribute("class", "chart");
+    this.element.appendChild(canvas);
+
+    const chart = new Chart(canvas, options);
+    this.charts.push(chart);
+  }
+
+  update(data) {
     this.data = this.parseData(data);
 
-    this.radarChart = new Chart("chart1", {
-      type: "radar",
-      data: this.data,
-      options: {
-        legend: {
-          display: false
-        },
-        scale: {
-          ticks: {
-            beginAtZero: true,
-            stepSize: 1,
-            max: 5
-          }
-        }
-      }
+    this.charts.forEach(chart => {
+      chart.data = this.data;
+      chart.update();
     });
-
-    this.pieChart = new Chart("chart2", {
-      type: "bar",
-      data: this.data,
-      options: {
-        legend: {
-          display: false
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-                stepSize: 1,
-                max: 5
-              }
-            }
-          ],
-          xAxes: [
-            {
-              ticks: {
-                autoSkip: false
-              }
-            }
-          ]
-        }
-      }
-    });
-
-    // Update the chart data
-    this.update = function(data) {
-      this.data = this.parseData(data);
-
-      this.radarChart.data = this.data;
-      this.radarChart.update();
-
-      this.pieChart.data = this.data;
-      this.pieChart.update();
-    };
   }
 
   parseData(data) {
@@ -83,4 +51,48 @@ export default class Results {
       ]
     };
   }
+
+  static chartOptions = [
+    {
+      type: "radar",
+      options: {
+        legend: {
+          display: false
+        },
+        scale: {
+          ticks: {
+            beginAtZero: true,
+            stepSize: 1,
+            max: 5
+          }
+        }
+      }
+    },
+    {
+      type: "bar",
+      options: {
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+                stepSize: 1,
+                max: 5
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                autoSkip: false
+              }
+            }
+          ]
+        }
+      }
+    }
+  ];
 }

@@ -17,10 +17,7 @@
       <section>
         <form class="questions" id="questions"></form>
       </section>
-      <section class="results">
-        <canvas class="chart" id="chart1"></canvas>
-        <canvas class="chart" id="chart2"></canvas>
-      </section>
+      <section class="results" id="results"></section>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -29,11 +26,10 @@
     <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
     <script>
 
-    // Load data
     $.getJSON("../data/data.json", function(data) {
       var questions = new questionnaire.Questions("#questions", data.questions);
       var formData = $(questions.form).serializeArray();
-      var results = new questionnaire.Results(formData);
+      var results = new questionnaire.Results("#results", formData);
 
       function updateChart() {
         formData = $(questions.form).serializeArray();

@@ -7,7 +7,7 @@
     <!-- <meta name=viewport content="width=device-width, initial-scale=1"> -->
     <meta name="description" content="Questionnaire that renders the results as charts">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="questionnaire.min.css?a5155b6143e1a4ff2882">
+    <link rel="stylesheet" href="questionnaire.min.css?027fe9c627657a00e633">
   </head>
   <body>
     <h1>Domeinenkennis</h1>
@@ -17,23 +17,23 @@
       <section>
         <form class="questions" id="questions"></form>
       </section>
-      <section class="results">
-        <canvas class="chart" id="chart1"></canvas>
-        <canvas class="chart" id="chart2"></canvas>
+      <section class="results" id="results">
+        <!-- <canvas class="chart" id="chart1"></canvas>
+        <canvas class="chart" id="chart2"></canvas> -->
       </section>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-    <script src="questionnaire.min.js?a5155b6143e1a4ff2882"></script>
+    <script src="questionnaire.min.js?027fe9c627657a00e633"></script>
     <script>
 
     // Load data
     $.getJSON("../data/data.json", function(data) {
       var questions = new questionnaire.Questions("#questions", data.questions);
       var formData = $(questions.form).serializeArray();
-      var results = new questionnaire.Results(formData);
+      var results = new questionnaire.Results("#results", formData);
 
       function updateChart() {
         formData = $(questions.form).serializeArray();
