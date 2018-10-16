@@ -5,10 +5,16 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: {
     main: "./src/index.js"
+    // questions: "./src/Questions/index.js",
+    // results: "./src/Results/index.js"
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "questionnaire.min.js"
+    filename: "questionnaire.min.js",
+    library: "questionnaire",
+    // filename: "[name].min.js",
+    // library: "[name]",
+    libraryTarget: "var"
   },
   externals: {
     "chart.js": "Chart",
@@ -50,6 +56,8 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: "questionnaire.min.css"
+      // filename: "[name].min.css"
+      // filename: "main.min.css"
     }),
     new HtmlWebpackPlugin({
       inject: false,
