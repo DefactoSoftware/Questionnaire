@@ -33,7 +33,7 @@ export default class Results {
     const labels = [];
     const values = [];
 
-    data.forEach(function(answer) {
+    data.forEach(answer => {
       labels.push(answer.name);
       values.push(Number(answer.value));
     });

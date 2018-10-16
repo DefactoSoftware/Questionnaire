@@ -2,7 +2,7 @@ import "./style.css";
 
 export default class Questions {
   constructor(selector, data) {
-    this.form = document.querySelector(selector);
+    this.element = document.querySelector(selector);
     this.data = data;
 
     data.forEach(this.addQuestion, this);
@@ -33,7 +33,7 @@ export default class Questions {
     options.innerHTML += `<input type="radio" name="${name}" value="0" checked>`;
 
     question.appendChild(options);
-    this.form.appendChild(question);
+    this.element.appendChild(question);
   }
 
   createOptionHTML(name, value, id) {

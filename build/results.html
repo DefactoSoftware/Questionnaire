@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Questionnaire</title>
+    <title>Questionnaire Results</title>
     <!-- <meta http-equiv=X-UA-Compatible content="IE=edge"> -->
     <!-- <meta name=viewport content="width=device-width, initial-scale=1"> -->
     <meta name="description" content="Questionnaire that renders the results as charts">
@@ -26,18 +26,18 @@
     <script src="questionnaire.min.js?4f93d79ab1850ff8f860"></script>
     <script>
 
-    $.getJSON("./data/questions.json", function(data) {
-      var questions = new questionnaire.Questions("#questions", data.questions);
-      var formData = $(questions.form).serializeArray();
-      var results = new questionnaire.Results("#results", formData);
-
-      function updateChart() {
-        formData = $(questions.form).serializeArray();
-        results.update(formData);
-      }
-
-      questions.form.addEventListener("change", updateChart);
-    });
+    // $.getJSON("./data/questions.json", function(data) {
+    //   var questions = new questionnaire.Questions("#questions", data.questions);
+    //   var formData = $(questions.form).serializeArray();
+    //   var results = new questionnaire.Results("#results", formData);
+    //
+    //   function updateChart() {
+    //     formData = $(questions.form).serializeArray();
+    //     results.update(formData);
+    //   }
+    //
+    //   questions.form.addEventListener("change", updateChart);
+    // });
 
     </script>
   </body>
