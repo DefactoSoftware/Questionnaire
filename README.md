@@ -1,5 +1,9 @@
 # Questionnaire
 
-Questionnaire that renders the results as charts.
+[Questionnaire](https://defactosoftware.github.io/Questionnaire/) that renders the results as charts.
 
-https://defactosoftware.github.io/Questionnaire/
+## How to start
+
+Install dependencies using `yarn install`.  
+Start server using `yarn start`.  
+Build using `yarn build`.
