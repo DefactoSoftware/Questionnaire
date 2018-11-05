@@ -36,6 +36,10 @@
         display: flex;
       }
 
+      .questions {
+        flex: 1;
+      }
+
       .results {
         flex: 1;
         max-width: 1000px;
@@ -48,8 +52,10 @@
     <h1>Domeinenkennis</h1>
     <h2>Welke domeinen zijn belangrijk in uw organisatie?</h2>
 
+    <hr>
+
     <div class="layout">
-      <form id="questions"></form>
+      <form class="questions" id="questions"></form>
       <div class="results" id="results"></div>
     </div>
 
@@ -60,14 +66,38 @@
     <script>
 
     $.getJSON("./data/questions.json", function(data) {
-      var questions = new questionnaire.Questions("#questions", data.questions);
-      var formData = $(questions.element).serializeArray();
-      var results = new questionnaire.Results("#results", formData);
+      function parseData(data) {
+        var averageData = []
+
+        data.forEach(function(group) {
+          var sum = 0;
+
+          group.questions.forEach(function(question) {
+            sum += question.answer;
+          });
+
+          var groupData = {
+            name: group.title,
+            value: sum / group.questions.length
+          };
+
+          averageData.push(groupData);
+        });
+
+        return averageData;
+      }
 
       function updateChart() {
-        formData = $(questions.element).serializeArray();
-        results.update(formData);
+        var formData = questions.serializeJSON();
+        var resultData = parseData(formData.groups);
+
+        results.update(resultData);
       }
+
+      var questions = new questionnaire.Questions("#questions", data.questions);
+      var formData = questions.serializeJSON();
+      var resultData = parseData(formData.groups);
+      var results = new questionnaire.Results("#results", resultData);
 
       questions.element.addEventListener("change", updateChart);
     });

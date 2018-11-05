@@ -43,7 +43,7 @@ export default class Results {
       labels: labels,
       datasets: [
         {
-          label: "Domeinen",
+          // label: "Domeinen",
           data: values,
           backgroundColor: "rgba(241, 185, 86, 0.5)",
           borderColor: "#f1b956",

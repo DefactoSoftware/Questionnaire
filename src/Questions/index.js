@@ -1,3 +1,4 @@
+import "jquery-serializejson";
 import "./style.css";
 
 export default class Questions {
@@ -6,26 +7,55 @@ export default class Questions {
     this.element = document.querySelector(selector);
     this.element.classList.add("questions");
 
-    data.forEach(this.addQuestion, this);
+    data.forEach(this.addSection, this);
   }
 
-  addQuestion(questionData, index) {
+  addSection(sectionData, sectionIndex) {
+    const section = document.createElement("section");
+    section.setAttribute("class", "section");
+
+    const title = document.createElement("h3");
+    title.innerHTML = sectionData.title;
+    section.appendChild(title);
+
+    section.innerHTML += `<input type="hidden"
+                                 name="groups[${sectionIndex}][title]"
+                                 value="${sectionData.title}">`;
+
+    sectionData.questions.forEach((questionTitle, questionIndex) => {
+      const questionElement = this.addQuestion(
+        questionTitle,
+        questionIndex,
+        sectionData.title,
+        sectionIndex
+      );
+      section.appendChild(questionElement);
+    });
+
+    this.element.appendChild(section);
+  }
+
+  addQuestion(questionTitle, questionIndex, sectionTitle, sectionIndex) {
     const question = document.createElement("div");
     question.setAttribute("class", "question");
 
-    const title = document.createElement("h3");
-    title.innerHTML = questionData.title;
+    const title = document.createElement("h4");
+    title.innerHTML = questionTitle;
     question.appendChild(title);
+
+    question.innerHTML += `<input type="hidden"
+                                 name="groups[${sectionIndex}][questions][${questionIndex}][question]"
+                                 value="${questionTitle}">`;
 
     const options = document.createElement("div");
     options.setAttribute("class", "options");
 
-    const name = questionData.title;
+    const name = `groups[${sectionIndex}][questions][${questionIndex}][answer]:number`;
 
     // Add options
-    for (let i = 5; i--; ) {
-      const value = i + 1;
-      const id = "option" + index + i;
+    for (let optionIndex = 5; optionIndex--; ) {
+      const value = optionIndex + 1;
+      const id = `option-${sectionIndex}-${questionIndex}-${optionIndex}`;
 
       options.innerHTML += this.createOptionHTML(name, value, id);
     }
@@ -34,7 +64,8 @@ export default class Questions {
     options.innerHTML += `<input type="radio" name="${name}" value="0" checked>`;
 
     question.appendChild(options);
-    this.element.appendChild(question);
+
+    return question;
   }
 
   createOptionHTML(name, value, id) {
@@ -44,5 +75,9 @@ export default class Questions {
         <div class="option">${value}</div>
       </label>
     `;
+  }
+
+  serializeJSON() {
+    return $(this.element).serializeJSON({ useIntKeysAsArrayIndex: true });
   }
 }

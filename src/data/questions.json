@@ -1,25 +1,74 @@
 {
   "questions": [
     {
-      "title": "Compliance (intern & extern)"
+      "title": "Compliance",
+      "questions": [
+        "Moeten we kunnen aantonen dat medewerkers gecertificeerd of bekwaam zijn.",
+        "Worden bepaalde opleidingen door een externe partij geaccrediteerd.",
+        "Zijn veel van onze medewerkers lid van een beroepsregister.",
+        "Is het herhaald aantonen van vakbekwaamheid op specifieke handelingen noodzakelijk.",
+        "Is een deel van de trainingen en opleidingen die wij aanbieden verplicht."
+      ]
     },
     {
-      "title": "Leerlandschap"
+      "title": "Events",
+      "questions": [
+        "Vindt een substantieel deel van de trainingen / scholingen ​niet online​ plaats.",
+        "Is de cursusadministratie een belangrijk proces.",
+        "Worden klassikale trainingen en scholingen intern georganiseerd.",
+        "Worden cursussen en trainingen aan externen aangeboden.",
+        "Is de financiële afhandeling van klassikale trainingen en scholingen belangrijk."
+      ]
     },
     {
-      "title": "Online Leren"
+      "title": "Online Leren",
+      "questions": [
+        "Vindt een substantieel deel van de trainingen / scholingen​ online​ plaats.",
+        "Maken we gebruik van allerlei soorten content, zoals videos, links, artikelen, LTI modules, bij het creëren van cursussen",
+        "Wordt door onszelf e-learning materiaal ontwikkeld.",
+        "Wordt extern e-learning ingekocht.",
+        "Vind toetsing digitaal plaats."
+      ]
     },
     {
-      "title": "Personeelontwikkeling"
+      "title": "Kennis Delen",
+      "questions": [
+        "Is sociaal leren belangrijk.",
+        "Maken experts uit onze eigen organisatie zelf leercontent.",
+        "Is het delen van kennis belangrijk.",
+        "Speelt informeel leren een steeds belangrijkere rol.",
+        "Werken we met de ​70:20:10​ aanpak."
+      ]
     },
     {
-      "title": "Kennisdeling"
+      "title": "Performance Support",
+      "questions": [
+        "is het beschikbaar hebben van de juiste kennis of informatie op het juiste moment ​(just in time​) van groot belang.",
+        "is het ​real-time​ raadplegen van werkinstructies belangrijk.",
+        "Doen we aan werkplekleren.",
+        "Is ​agile learning ​ een thema.",
+        "Is vraaggestuurd leren belangrijk."
+      ]
     },
     {
-      "title": "Performance Support"
+      "title": "Leerlandschap​ >> ​Curation",
+      "questions": [
+        "Is het belangrijk dat iedereen een op maat gemaakt leeraanbod krijgt.",
+        "Bieden we uitgebreide leerpaden aan.",
+        "Is het evalueren en reviewn van trainingen en e-learning een must.",
+        "Meten we of onze trainingen het beoogde effect hebben.",
+        "Hebben medewerkers een persoonlijk ontwikkelplan."
+      ]
     },
     {
-      "title": "Privacy & Security"
+      "title": "Personeelsontwikkeling",
+      "questions": [
+        "Worden coaching- of jaargesprekken ingezet.",
+        "Kunnen medewerkers voor duurdere trainingen een educatie aanvraag doen.",
+        "Is het belangrijk dat medewerkers duurzaam inzetbaar zijn",
+        "Houden we rekening met mobiliteit en interne vacatures.",
+        "Hebben individuën en afdelingen een eigen leerbudget."
+      ]
     }
   ]
 }

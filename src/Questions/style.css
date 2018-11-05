@@ -1,7 +1,7 @@
 .questions {
   .question {
     border-bottom: 2px solid #f2f2f2;
-    padding: 1em 0;
+    padding: 0.5em 0;
   }
 
   .question:first-child {
@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    padding: 1em 0;
+    padding: 0.5em 0;
   }
 
   @media (min-width: 1000px) {
