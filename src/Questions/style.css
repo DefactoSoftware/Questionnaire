@@ -1,4 +1,8 @@
 .questions {
+  .group {
+    margin: 2em 0;
+  }
+
   .question {
     border-bottom: 2px solid #f2f2f2;
     padding: 0.5em 0;

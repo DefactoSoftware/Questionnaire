@@ -10,32 +10,32 @@ export default class Questions {
     data.forEach(this.addSection, this);
   }
 
-  addSection(sectionData, sectionIndex) {
-    const section = document.createElement("section");
-    section.setAttribute("class", "section");
+  addSection(groupData, groupIndex) {
+    const group = document.createElement("div");
+    group.setAttribute("class", "group");
 
     const title = document.createElement("h3");
-    title.innerHTML = sectionData.title;
-    section.appendChild(title);
+    title.innerHTML = groupData.title;
+    group.appendChild(title);
 
-    section.innerHTML += `<input type="hidden"
-                                 name="groups[${sectionIndex}][title]"
-                                 value="${sectionData.title}">`;
+    group.innerHTML += `<input type="hidden"
+                                 name="groups[${groupIndex}][title]"
+                                 value="${groupData.title}">`;
 
-    sectionData.questions.forEach((questionTitle, questionIndex) => {
+    groupData.questions.forEach((questionTitle, questionIndex) => {
       const questionElement = this.addQuestion(
         questionTitle,
         questionIndex,
-        sectionData.title,
-        sectionIndex
+        groupData.title,
+        groupIndex
       );
-      section.appendChild(questionElement);
+      group.appendChild(questionElement);
     });
 
-    this.element.appendChild(section);
+    this.element.appendChild(group);
   }
 
-  addQuestion(questionTitle, questionIndex, sectionTitle, sectionIndex) {
+  addQuestion(questionTitle, questionIndex, groupTitle, groupIndex) {
     const question = document.createElement("div");
     question.setAttribute("class", "question");
 
@@ -44,18 +44,18 @@ export default class Questions {
     question.appendChild(title);
 
     question.innerHTML += `<input type="hidden"
-                                 name="groups[${sectionIndex}][questions][${questionIndex}][question]"
+                                 name="groups[${groupIndex}][questions][${questionIndex}][question]"
                                  value="${questionTitle}">`;
 
     const options = document.createElement("div");
     options.setAttribute("class", "options");
 
-    const name = `groups[${sectionIndex}][questions][${questionIndex}][answer]:number`;
+    const name = `groups[${groupIndex}][questions][${questionIndex}][answer]:number`;
 
     // Add options
     for (let optionIndex = 5; optionIndex--; ) {
       const value = optionIndex + 1;
-      const id = `option-${sectionIndex}-${questionIndex}-${optionIndex}`;
+      const id = `option-${groupIndex}-${questionIndex}-${optionIndex}`;
 
       options.innerHTML += this.createOptionHTML(name, value, id);
     }
