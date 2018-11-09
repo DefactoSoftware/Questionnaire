@@ -11,4 +11,5 @@ Questionnaire that renders the results as charts.
 
 Install dependencies using `yarn install`.  
 Start server using `yarn start`.  
-Build using `yarn build`.
+Build using `yarn build`.  
+Deploy using `yarn deploy` (to gh-pages).
