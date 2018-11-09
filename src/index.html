@@ -73,7 +73,6 @@
 
       var questions = new questionnaire.Questions("#questions", data.questions);
       var formData = questions.serializeJSON();
-      console.log(formData);
       var averageResults = questions.getAverageGroupResults(formData);
       var results = new questionnaire.Results("#results", averageResults);
 
