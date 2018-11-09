@@ -17,8 +17,7 @@
     }
 
     h1,
-    h2,
-    h3 {
+    h2 {
       margin-top: 0;
     }
 
@@ -66,38 +65,14 @@
     <script>
 
     $.getJSON("./data/questions.json", function(data) {
-      function parseData(data) {
-        var averageData = []
-
-        data.forEach(function(group) {
-          var sum = 0;
-
-          group.questions.forEach(function(question) {
-            sum += question.answer;
-          });
-
-          var groupData = {
-            name: group.title,
-            value: sum / group.questions.length
-          };
-
-          averageData.push(groupData);
-        });
-
-        return averageData;
-      }
-
       function updateChart() {
-        var formData = questions.serializeJSON();
-        var resultData = parseData(formData.groups);
-
-        results.update(resultData);
+        var averageResults = questions.getAverageGroupResults();
+        results.update(averageResults);
       }
 
       var questions = new questionnaire.Questions("#questions", data.questions);
-      var formData = questions.serializeJSON();
-      var resultData = parseData(formData.groups);
-      var results = new questionnaire.Results("#results", resultData);
+      var averageResults = questions.getAverageGroupResults();
+      var results = new questionnaire.Results("#results", averageResults);
 
       questions.element.addEventListener("change", updateChart);
     });
