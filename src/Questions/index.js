@@ -1,4 +1,5 @@
 import "jquery-serializejson";
+import helpers from "../helpers";
 import "./style.css";
 
 export default class Questions {
@@ -50,7 +51,7 @@ export default class Questions {
     const options = document.createElement("div");
     options.setAttribute("class", "options");
 
-    const name = `groups[${groupIndex}][questions][${questionIndex}][answer]:number`;
+    const name = `groups[${groupIndex}][questions][${questionIndex}][answer]`;
 
     // Add options
     for (let optionIndex = 5; optionIndex--; ) {
@@ -81,25 +82,5 @@ export default class Questions {
     return $(this.element).serializeJSON({ useIntKeysAsArrayIndex: true });
   }
 
-  getAverageGroupResults() {
-    const data = this.serializeJSON();
-    const averageData = [];
-
-    data.groups.forEach(group => {
-      let sum = 0;
-
-      group.questions.forEach(question => {
-        sum += question.answer;
-      });
-
-      const groupData = {
-        name: group.title,
-        value: sum / group.questions.length
-      };
-
-      averageData.push(groupData);
-    });
-
-    return averageData;
-  }
+  getAverageGroupResults = data => helpers.getAverageGroupResults(data);
 }
