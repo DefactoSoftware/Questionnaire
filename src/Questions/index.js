@@ -8,10 +8,10 @@ export default class Questions {
     this.element = document.querySelector(selector);
     this.element.classList.add("questions");
 
-    data.forEach(this.addSection, this);
+    data.forEach(this.addGroup, this);
   }
 
-  addSection(groupData, groupIndex) {
+  addGroup(groupData, groupIndex) {
     const group = document.createElement("div");
     group.setAttribute("class", "group");
 

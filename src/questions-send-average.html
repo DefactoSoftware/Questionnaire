@@ -7,7 +7,7 @@
     <!-- <meta name=viewport content="width=device-width, initial-scale=1"> -->
     <meta name="description" content="Questionnaire that renders the results as charts">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="questionnaire.min.css?06c2bd4a7913664a9155">
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.chunks.main.css %>">
     <style type="text/css">
 
     body {
@@ -40,17 +40,37 @@
     <h1>Domeinenkennis</h1>
     <h2>Welke domeinen zijn belangrijk in uw organisatie?</h2>
 
-    <form action="results.html" method="GET">
-      <div id="questions"></div>
+    <!-- Questions form -->
+    <form id="questions-form"></form>
+
+    <!-- Results form that will be send -->
+    <form id="results-form" action="results.html" method="GET">
+      <input type="hidden" name="groups" id="results-input">
       <button type="submit">Submit</button>
     </form>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="questionnaire.min.js?06c2bd4a7913664a9155"></script>
+    <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
     <script>
 
     $.getJSON("./data/questions.json", function(data) {
-      var questions = new questionnaire.Questions("#questions", data.questions);
+      // Questionnaire
+      var questions = new questionnaire.Questions("#questions-form", data.questions);
+
+       // Results form
+      var $questionsForm = $("#questions-form");
+      var $resultsForm = $("#results-form");
+      var $resultsInput = $("#results-input");
+
+      $resultsForm.on("submit", function(event) {
+        // Calculate average group results
+        var resultData = questions.serializeJSON();
+        resultData = questions.getAverageGroupResults(resultData);
+        resultData = JSON.stringify(resultData);
+
+         // Populate hidden results input before submitting
+        $resultsInput.val(resultData);
+      });
     });
 
     </script>
