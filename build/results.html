@@ -7,7 +7,7 @@
     <!-- <meta name=viewport content="width=device-width, initial-scale=1"> -->
     <meta name="description" content="Questionnaire that renders the results as charts">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="questionnaire.min.css?d0330c50bf0d2436dffc">
+    <link rel="stylesheet" href="questionnaire.min.css?fa9b440fe99b23194d0d">
     <style type="text/css">
 
     body {
@@ -17,8 +17,7 @@
     }
 
     h1,
-    h2,
-    h3 {
+    h2 {
       margin-top: 0;
     }
 
@@ -33,29 +32,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-    <script src="questionnaire.min.js?d0330c50bf0d2436dffc"></script>
+    <script src="questionnaire.min.js?fa9b440fe99b23194d0d"></script>
     <script>
 
-    function getData() {
-      var params = [];
-      var query = window.location.search.substring(1);
-      var vars = query.split("&");
-
-      for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split("=");
-        pair[0] = pair[0].replace(/\+/g, "%20");
-
-        params[i] = {
-          name: decodeURIComponent(pair[0]),
-          value: pair[1]
-        };
-      }
-
-      return params;
-    };
-
-    var data = getData();
-    var results = new questionnaire.Results("#results", data);
+    var results = new questionnaire.Results("#results", location.search);
 
     </script>
   </body>

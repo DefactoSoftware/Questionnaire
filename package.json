@@ -1,9 +1,9 @@
 {
   "name": "Questionnaire",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Questionnaire that renders the results as charts",
   "main": "index.js",
-  "repository": "git@github.com:sn3p/DefactoSoftware/Questionnaire",
+  "repository": "git@github.com:DefactoSoftware/Questionnaire",
   "author": "Matthijs Kuiper <info@matthijskuiper.nl>",
   "license": "MIT",
   "scripts": {
@@ -15,7 +15,9 @@
   "dependencies": {
     "chart.js": "^2.7.2",
     "jquery": "^3.3.1",
-    "moment": "^2.22.2"
+    "jquery-serializejson": "^2.8.1",
+    "moment": "^2.22.2",
+    "qs": "^6.5.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",

@@ -1,7 +1,14 @@
+import qs from "qs";
+import helpers from "../helpers";
 import "./style.css";
 
 export default class Results {
   constructor(selector, data) {
+    // If data is a string we assume it a querystring
+    if (typeof data === "string") {
+      data = this.parseQueryString(data);
+    }
+
     this.data = this.parseData(data);
     this.element = document.querySelector(selector);
     this.element.classList.add("results");
@@ -43,7 +50,6 @@ export default class Results {
       labels: labels,
       datasets: [
         {
-          label: "Domeinen",
           data: values,
           backgroundColor: "rgba(241, 185, 86, 0.5)",
           borderColor: "#f1b956",
@@ -52,6 +58,15 @@ export default class Results {
       ]
     };
   }
+
+  parseQueryString(str) {
+    let data = qs.parse(str, { ignoreQueryPrefix: true });
+    data = this.getAverageGroupResults(data);
+
+    return data;
+  }
+
+  getAverageGroupResults = data => helpers.getAverageGroupResults(data);
 
   static chartOptions = [
     {
