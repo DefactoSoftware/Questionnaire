@@ -4,9 +4,23 @@ import "./style.css";
 
 export default class Results {
   constructor(selector, data) {
-    // If data is a string we assume it a querystring
+    // Parse data string (assuming it's a querystring)
     if (typeof data === "string") {
-      data = this.parseQueryString(data);
+      data = Results.parseQueryString(data);
+    }
+
+    // Parse groups data string (assuming it's JSON)
+    // This is the case when submitting stringified json
+    if (typeof data.groups === "string") {
+      data.groups = JSON.parse(data.groups);
+    }
+
+    // Need to calculate group average?
+    const needGroupAverageConvertion = Array.isArray(data.groups[0].questions);
+
+    // Calculate group average if not already done
+    if (needGroupAverageConvertion) {
+      data.groups = Results.getAverageGroupResults(data.groups);
     }
 
     this.data = this.parseData(data);
@@ -41,7 +55,8 @@ export default class Results {
     const labels = [];
     const values = [];
 
-    data.forEach(answer => {
+    data.groups.forEach(answer => {
+      // data.forEach(answer => {
       labels.push(answer.name);
       values.push(Number(answer.value));
     });
@@ -59,14 +74,9 @@ export default class Results {
     };
   }
 
-  parseQueryString(str) {
-    let data = qs.parse(str, { ignoreQueryPrefix: true });
-    data = this.getAverageGroupResults(data);
+  static parseQueryString = str => qs.parse(str, { ignoreQueryPrefix: true });
 
-    return data;
-  }
-
-  getAverageGroupResults = data => helpers.getAverageGroupResults(data);
+  static getAverageGroupResults = data => helpers.getAverageGroupResults(data);
 
   static chartOptions = [
     {

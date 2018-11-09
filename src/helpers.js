@@ -1,10 +1,10 @@
 /*
 Get average results data per group.
 */
-function getAverageGroupResults(data) {
+function getAverageGroupResults(groups) {
   const averageData = [];
 
-  data.groups.forEach(group => {
+  groups.forEach(group => {
     let sum = 0;
 
     group.questions.forEach(question => {
