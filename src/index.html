@@ -66,15 +66,18 @@
 
     $.getJSON("./data/questions.json", function(data) {
       function updateChart() {
-        var formData = questions.serializeJSON();
-        var averageResults = questions.getAverageGroupResults(formData);
-        results.update(averageResults);
+        var resultData = questions.serializeJSON();
+        resultData.groups = questions.getAverageGroupResults(resultData.groups);
+        results.update(resultData);
       }
 
+      // Questions
       var questions = new questionnaire.Questions("#questions", data.questions);
-      var formData = questions.serializeJSON();
-      var averageResults = questions.getAverageGroupResults(formData);
-      var results = new questionnaire.Results("#results", averageResults);
+
+      // Results
+      var resultData = questions.serializeJSON();
+      resultData.groups = questions.getAverageGroupResults(resultData.groups);
+      var results = new questionnaire.Results("#results", resultData);
 
       questions.element.addEventListener("change", updateChart);
     });

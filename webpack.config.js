@@ -74,8 +74,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
-      template: "./src/questions-send-average.html",
-      filename: "questions-send-average.html"
+      template: "./src/questions-submit-average.html",
+      filename: "questions-submit-average.html"
     }),
     new HtmlWebpackPlugin({
       inject: false,

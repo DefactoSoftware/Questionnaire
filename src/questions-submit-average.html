@@ -57,18 +57,17 @@
       // Questionnaire
       var questions = new questionnaire.Questions("#questions-form", data.questions);
 
-       // Results form
-      var $questionsForm = $("#questions-form");
+      // Results form
       var $resultsForm = $("#results-form");
       var $resultsInput = $("#results-input");
 
       $resultsForm.on("submit", function(event) {
         // Calculate average group results
         var resultData = questions.serializeJSON();
-        resultData = questions.getAverageGroupResults(resultData);
+        resultData = questions.getAverageGroupResults(resultData.groups);
         resultData = JSON.stringify(resultData);
 
-         // Populate hidden results input before submitting
+        // Populate hidden results input before submitting
         $resultsInput.val(resultData);
       });
     });
