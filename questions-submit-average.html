@@ -7,7 +7,7 @@
     <!-- <meta name=viewport content="width=device-width, initial-scale=1"> -->
     <meta name="description" content="Questionnaire that renders the results as charts">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="questionnaire.min.css?06c2bd4a7913664a9155">
+    <link rel="stylesheet" href="questionnaire.min.css?e8b8fbc8893cbb4f7eaa">
     <style type="text/css">
 
     body {
@@ -50,25 +50,24 @@
     </form>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="questionnaire.min.js?06c2bd4a7913664a9155"></script>
+    <script src="questionnaire.min.js?e8b8fbc8893cbb4f7eaa"></script>
     <script>
 
     $.getJSON("./data/questions.json", function(data) {
       // Questionnaire
       var questions = new questionnaire.Questions("#questions-form", data.questions);
 
-       // Results form
-      var $questionsForm = $("#questions-form");
+      // Results form
       var $resultsForm = $("#results-form");
       var $resultsInput = $("#results-input");
 
       $resultsForm.on("submit", function(event) {
         // Calculate average group results
         var resultData = questions.serializeJSON();
-        resultData = questions.getAverageGroupResults(resultData);
+        resultData = questions.getAverageGroupResults(resultData.groups);
         resultData = JSON.stringify(resultData);
 
-         // Populate hidden results input before submitting
+        // Populate hidden results input before submitting
         $resultsInput.val(resultData);
       });
     });
