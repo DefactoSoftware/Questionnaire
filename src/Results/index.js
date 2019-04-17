@@ -95,13 +95,13 @@ export default class Results {
       }
     },
     {
-      type: "bar",
+      type: "horizontalBar",
       options: {
         legend: {
           display: false
         },
         scales: {
-          yAxes: [
+          xAxes: [
             {
               ticks: {
                 beginAtZero: true,
@@ -110,7 +110,7 @@ export default class Results {
               }
             }
           ],
-          xAxes: [
+          yAxes: [
             {
               ticks: {
                 autoSkip: false
