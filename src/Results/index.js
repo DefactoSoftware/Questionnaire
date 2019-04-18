@@ -23,6 +23,11 @@ export default class Results {
       data.groups = Results.getAverageGroupResults(data.groups);
     }
 
+    function SortByValue(x, y) {
+      return y.value - x.value;
+    }
+
+    data.groups.sort(SortByValue);
     this.data = this.parseData(data);
     this.element = document.querySelector(selector);
     this.element.classList.add("results");
