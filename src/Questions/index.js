@@ -40,8 +40,8 @@ export default class Questions {
     const question = document.createElement("div");
     question.setAttribute("class", "question");
 
-    const title = document.createElement("h4");
-    title.innerHTML = questionTitle;
+    const title = document.createElement("p");
+    title.innerHTML = "Bij onze organisatie " + questionTitle;
     question.appendChild(title);
 
     question.innerHTML += `<input type="hidden"
