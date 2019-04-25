@@ -15,10 +15,6 @@ export default class Questions {
     const group = document.createElement("div");
     group.setAttribute("class", "group");
 
-    const title = document.createElement("h3");
-    title.innerHTML = groupData.title;
-    group.appendChild(title);
-
     group.innerHTML += `<input type="hidden"
                                  name="groups[${groupIndex}][title]"
                                  value="${groupData.title}">`;
