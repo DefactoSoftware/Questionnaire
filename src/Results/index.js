@@ -72,8 +72,7 @@ export default class Results {
         {
           data: values,
           backgroundColor: "rgba(241, 185, 86, 0.5)",
-          borderColor: "#f1b956",
-          pointBackgroundColor: "#f1b956"
+          borderColor: "#f1b956"
         }
       ]
     };
@@ -88,15 +87,19 @@ export default class Results {
       type: "radar",
       options: {
         legend: {
-          display: false
+          display: false,
         },
         scale: {
           ticks: {
             beginAtZero: true,
             stepSize: 1,
-            max: 5
-          }
-        }
+            max: 5,
+          },
+          pointLabels: {
+            fontSize: 16,
+          },
+        },
+
       }
     },
     {
@@ -111,15 +114,19 @@ export default class Results {
               ticks: {
                 beginAtZero: true,
                 stepSize: 1,
-                max: 5
+                max: 5,
+                fontSize: 16,
+                fontColor: "#303030",
               }
             }
           ],
           yAxes: [
             {
               ticks: {
-                autoSkip: false
-              }
+                autoSkip: false,
+                fontSize: 16,
+                fontColor: "#303030",
+              },
             }
           ]
         }
